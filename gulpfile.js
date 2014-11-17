@@ -1,16 +1,18 @@
-var tasks = ['css', 'minify-html', 'watch'],
+var tasks = ['css', 'minify-html', 'react'],
     postcss = require('gulp-postcss'),
     gulp = require('gulp'),
     autoprefixer = require('autoprefixer-core'),
     mqpacker = require('css-mqpacker'),
     csswring = require('csswring'),
     minifyHTML = require('gulp-minify-html'),
+    react = require('gulp-react'),
     SRC_DIR = './src/',
     OUTPUT_DIR = './output',
     PATH_CSS = SRC_DIR + '*.css',
-    PATH_HTML = SRC_DIR + '*.html';
+    PATH_HTML = SRC_DIR + '*.html',
+    PATH_JSX = SRC_DIR + '*.jsx';
 
-process.env.YENV === 'production' && tasks.pop();
+if (process.env.YENV != 'production') tasks = tasks.concat(['watch']);
 
 gulp.task('minify-html', function() {
     var opts = { conditionals: true };
@@ -31,7 +33,14 @@ gulp.task('css', function () {
         .pipe(gulp.dest(OUTPUT_DIR));
 });
 
+gulp.task('react', function () {
+    gulp.src(PATH_JSX)
+        .pipe(react())
+        .pipe(gulp.dest(OUTPUT_DIR))
+});
+
 gulp.task('watch', function() {
+    gulp.watch(PATH_JSX, ['react']);
     gulp.watch(PATH_CSS, ['css']);
     gulp.watch(PATH_HTML, ['minify-html']);
 });
