@@ -1,0 +1,25 @@
+{
+  "name": "boxes",
+  "version": "0.0.0",
+  "description": "simple demo for equal boxed layout",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyv/boxes.git"
+  },
+  "author": "Yuri Tkachenko",
+  "bugs": {
+    "url": "https://github.com/tyv/boxes/issues"
+  },
+  "homepage": "https://github.com/tyv/boxes",
+  "devDependencies": {
+    "autoprefixer-core": "^4.0.0",
+    "css-mqpacker": "^1.1.2",
+    "csswring": "^1.3.1",
+    "gulp": "^3.8.10",
+    "gulp-minify-html": "^0.1.6",
+    "gulp-postcss": "^3.0.0"
+  }
+}
